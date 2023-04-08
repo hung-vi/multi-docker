@@ -10,15 +10,15 @@ script:
   - docker run -e CI=true client-test npm test
 
 after_success:
-  - docker build -t multi-client ./client
-  - docker build -t multi-nginx ./nginx
-  - docker build -t multi-server ./server
-  - docker build -t multi-worker ./worker
+  - docker build -t hungvi/multi-client ./client
+  - docker build -t hungvi/multi-nginx ./nginx
+  - docker build -t hungvi/multi-server ./server
+  - docker build -t hungvi/multi-worker ./worker
 
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push multi-client
-  - docker push multi-nginx
-  - docker push multi-server
-  - docker push multi-worker
+  - docker push hungvi/multi-client
+  - docker push hungvi/multi-nginx
+  - docker push hungvi/multi-server
+  - docker push hungvi/multi-worker
